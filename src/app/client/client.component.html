@@ -1,0 +1,147 @@
+
+<section class="checkout spad" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h6 class="coupon__link"><span class="icon_tag_alt"></span> <a routerLink="/caddies">Cliquez ici pour revenir à votre panier</a>
+           </h6>
+            </div>
+        </div>
+        <div class="row">
+        <form  #f ="ngForm" (ngSubmit)="onSaveClient()" class="checkout__form form col-lg-7 ">
+     
+                             
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="checkout__form__input">
+                                <p>Nom du Client<span>*</span></p>
+                                <input type="text" required  name="nom" [ngModelOptions]="{standalone: false}" ngModel class="form-control" [(ngModel)]="client.lastName"/>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="checkout__form__input">
+                                <p>Prénom du Client<span>*</span></p>
+                                <input type="text" required name="prenom" ngModel class="form-control" [ngModelOptions]="{standalone: false}" [(ngModel)]="client.firstName"/>
+ 
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-12">
+                            <div class="checkout__form__input">
+                                <p>Adresse <span>*</span> </p>
+                                <textarea type="text" required name="adresse" [ngModelOptions]="{standalone: false}" ngModel class="form-control" [(ngModel)]="client.address">
+                                </textarea>
+                            </div>
+                         
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="checkout__form__input">
+                                <p>Téléphone <span>*</span> </p>
+                                <input type="text" required name="phoneNumber" [ngModelOptions]="{standalone: false}" ngModel class="form-control" [(ngModel)]="client.phone"/>
+   
+                            </div>
+                         
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="checkout__form__input">
+                                <p>Email <span>*</span></p>
+                                <input type="text" required name="email" [ngModelOptions]="{standalone: false}" ngModel class="form-control" [(ngModel)]="client.email"/>
+                            </div>
+                         
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="checkout__form__input" *ngIf="villes">
+                                <p >Ville<span>*</span></p>
+                                <select class="form-control" 
+                                class="form-control"  (change)="selectOptionVille($event.target.value)"
+                                [(ngModel)]="selected" [ngModelOptions]="{standalone: true}" >
+                          
+                                  <option *ngFor="let g of villes.villes" [value]="g.name" >{{g.name}}</option>
+                                 
+                                </select>         </div>
+                         
+                        </div>
+                       
+                        </div>
+               
+                   
+            
+                <button *ngIf="mode==0" type="submit" class="site-btn" style="margin-top: 10px;" [disabled]="f.invalid"  value="Register">Enregistrer</button>
+           
+            </form>
+            <div class="col-lg-5" *ngIf="mode==1" style="margin-top: 10px;">
+                <div class="checkout__order"  >
+                    <h5>Détails Vente</h5>
+                    <div class="checkout__order__product">
+                        <ul>
+                            <li>
+                                <span class="top__text">Product</span>
+                                <span class="top__text__right">Total</span>
+                            </li>
+                            <li *ngFor="let p of orderService.order.products">
+
+                                {{p.product.nameProduct}} <span>{{p.quantity}}x{{p.price}} MAD</span></li>
+                          
+                        </ul>
+                    </div>
+                    <div class="checkout__order__total">
+                        <ul>
+                        
+                            <li>Total <span>{{orderService.getTotal()|number:'0.2'}} MAD</span></li>
+                        </ul>
+                    </div>
+                    <div class="checkout__order__widget">
+                      
+                        <p>Prénom de Client : {{orderService.order.client.firstName}}</p>
+                        <p>Nom de Client : {{orderService.order.client.lastName}}</p>
+                        <p>Ville de Client : {{selectedOptionVille}}</p>
+                        <p>La date  : {{orderService.todayNumber |date}}</p>
+                        
+                     
+                    </div>
+                    <button type="submit" class="site-btn" (click)="onOrder()" *ngIf="!orderService.order.idOrder">Valider la commmande</button>
+                   
+              
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="checkout__order"  *ngIf="mode==2" style="margin-top: 10px;">
+                    <h5>Choisir le mode de paiment</h5>
+                    <div class="checkout__order__product">
+                        <ul>
+                            <li>
+                                <span class="top__text">Par carte</span>
+                                
+                              </li>
+                          <li>
+                               <img src="assets/img/payment/payment-1.png" alt="" class="img-payement" routerLink="/client-cmd/payCard">
+                           <img src="assets/img/payment/payment-2.png" alt="" class="img-payement" routerLink="/client-cmd/payCard"> 
+                        
+                          </li>
+                          
+                        </ul>
+                        <ul>
+                            <li>
+                                <span class="top__text">Paypal</span>
+                                
+
+                            </li>
+                            <li>
+                                 <img class="img-payement" src="assets/img/payment/payment-4.png" alt="" (click)="onPayPaypal()"> 
+                               
+                                  <a *ngIf="paypal" href={{url}} class="confirm glyphicon glyphicon-ok"> Confirmer </a> 
+                            </li>
+                          
+                             </ul>
+                     
+                    </div>
+                   
+              
+                </div>
+            </div>
+        </div>
+        </div>
+        </section>
+   <!--   
+-->

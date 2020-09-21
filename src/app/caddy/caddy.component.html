@@ -1,0 +1,74 @@
+
+<section class="shop-cart spad">
+    <div class="container" >
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="shop__cart__table">
+                    <table *ngIf="taille!=0">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th style="text-align: center;">Option</th>
+
+                                <th style="text-align: center;">Quantité</th>
+                            
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let pi of caddyService.getCurrentCaddy().productsItems">
+                                <td class="cart__product__item">
+                                    <img height="100" [src]="this.catalService.host+'/photoProducts/'+pi.product.idProduct+'?ts='+getTS()" alt="image">
+                           
+                                    <div class="cart__product__item__title">
+                                        <h4>{{pi.product.nameProduct}}</h4>
+                                        <div class="rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="cart__price">{{pi.price}} MAD</td>
+                                <td style="color: #000000;text-align: center; font-size: 16px;">{{pi.optionP}} </td>
+                                <td  style="color: #000000;text-align: center; font-size: 18px;">
+                                    {{pi.quantity}}
+                                </td>
+                             
+                                <td class="cart__close"><span (click)="onRemoveProductFromCaddy(pi)" class="icon_close"></span></td>
+                            </tr>
+                         
+                        </tbody>
+                    </table>
+                    <h3 *ngIf="taille==0" style="text-align: center;">
+                         Votre panier est vide
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="cart__btn" >
+                    <a (click)="onSelectedProduct()" class="clicable"> <span class="glyphicon glyphicon-shopping-cart"></span>Continuer Shopping</a>
+                    <a *ngIf="taille!=0"(click)="removeCaddy()" class="primary-btn clicable" style="margin-left: 10px; margin-top: 10px;">
+                        <span class="glyphicon glyphicon-trash" ></span>Vider le panier</a>
+                </div>
+            </div>
+         
+        
+        </div>
+        <div class="col-lg-4 offset-lg-2 pull-right">
+            <div class="cart__total__procced">
+                <h5>Le total de la commande </h5>
+                <ul>
+               
+                    <li>Total <span>{{getTotalCaddy()| number :'0.2'}} MAD</span></li>
+                </ul>
+                <span *ngIf="taille!=0" (click)="onNewOrder()" class="primary-btn clicable">Commander</span>
+            </div>
+        </div>
+    </div>
+</section>

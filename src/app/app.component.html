@@ -1,0 +1,241 @@
+<div id="preloder">
+  <div class="loader"></div>
+</div>
+  <div class="offcanvas-menu-overlay"  [ngClass]="this.menu == true? 'active' : ''" ></div>
+  <div class="offcanvas-menu-wrapper "  [ngClass]="this.menu  == true? 'active' : ''">
+      <div class="offcanvas__close" (click)="activeMenu()">+</div>
+      <ul class="offcanvas__widget">
+      
+          <li class="dropdown">
+            <div class="glyphicon glyphicon-user clicable" style="font-size: 25px;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              
+            </div>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" routerLink="/login" >Se connecter</a>
+              <a class="dropdown-item" (click)="onLogout()">Se déconnecter</a>
+ 
+            </div>
+        </li>  
+          <li *ngIf="!isAdmin()" (click)="atCaddy()"><a  routerLink="/caddies"><span style="font-size: 30px;" class="icon_bag_alt"></span>
+            <div class="tip" style="font-size: 15px;height: 20px;width: 20px;" >{{caddyService.getCurrentCaddy().productsItems.length}}</div>
+        </a></li>
+         
+      </ul>
+      <div class="offcanvas__logo" >
+          <a href="./index.html"><img src="assets/images/Logotccie.png"></a>
+      </div>
+      <div id="mobile-menu-wrap">
+        <div class="slickvan_menu">
+            <nav class="slicknav_nav slicknav_hidden" style="display: none;">
+                <ul>
+                    <li   *ngIf ="isAdmin()" class="dropdown ">
+                        <div class="clicable item " id="dropdownMenuButton"data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #000000;">Espace Gestions</div>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a (click)="atGestion()" class="dropdown-item" routerLink="/categories">Gestion des catégories</a>
+                          <a (click)="atGestion()" class="dropdown-item" routerLink="/resellers">Gestion des revendeurs</a>
+                          <a (click)="atGestion()" class="dropdown-item" routerLink="/rangs">Gestion des gammes</a>
+                          <a (click)="atGestion()" class="dropdown-item" routerLink="/clients">Espace clients</a>
+                        
+                          <a (click)="atGestion()" class="dropdown-item"routerLink="/commandes">Espace commandes</a>
+                        </div>
+                    </li>
+                     <li  [ngClass]="this.catService.activeH  == true? 'active' : ''"><a (click)="atHome()" routerLink="/home" class="clicable item">Home</a></li>
+                        <li  [ngClass]="this.catService.activeP  == true? 'active' : ''"><a  (click)="this.catService.onSelectedProduct()" class="clicable item" >Produits</a></li>
+                        <li><a href="#gammes" class="item">Gammes</a></li>
+                        <li [ngClass]="this.activeR  == true? 'active' : ''"><a class="item" (click)="atResellers()" routerLink="/resellers-liste" *ngIf="!isAdmin()">Revendeurs</a></li>
+                       
+                         
+                      
+                        
+                        <li><a href="#nous"class="item" >A propos</a></li>
+                        <li><a href="#contact"  class="item">Contact</a></li>
+           </ul>
+
+            </nav>
+
+        </div>
+      </div>
+    
+  </div>
+  <header class="header" style="background-color: #81F0BF;">
+    <div class="container-fluid" >
+        <div class="row">
+            <div class="col-xl-3 col-lg-2">
+                <div class="header__logo">
+                    <a href="./index.html"><img src="assets/images/Logotccie.png"  style="height: 50px;" alt="logo"></a>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-7">
+                <nav class="header__menu">
+                    <ul>
+                        <li  [ngClass]="this.catService.activeH  == true? 'active' : ''"><a (click)="atHome()" routerLink="/home" class="clicable">Home</a></li>
+                        <li  [ngClass]="this.catService.activeP  == true? 'active' : ''"><a (click)="this.catService.onSelectedProduct()" class="clicable" >Produits</a></li>
+                        <li><a href="#gammes">Gammes</a></li>
+                        <li [ngClass]="this.activeR  == true? 'active' : ''"><a (click)="atResellers()" routerLink="/resellers-liste" *ngIf="!isAdmin()">Revendeurs</a></li>
+
+                      
+                        <li  [ngClass]="activeG  == true? 'active' : ''"  class="clicable" *ngIf ="isAdmin()"><a >Espace Gestions</a>
+                            <ul class="dropdown">
+                              <li><a (click)="atGestion()" routerLink="/categories">Gestion des catégories</a></li>
+                              <li><a (click)="atGestion()" routerLink="/resellers">Gestion des revendeurs</a></li>
+                              <li><a (click)="atGestion()" routerLink="/rangs">Gestion des gammes</a></li>
+                              <li><a (click)="atGestion()" routerLink="/clients">Espace clients</a></li>
+                            
+                              <li><a (click)="atGestion()" routerLink="/commandes">Espace commandes</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#nous" *ngIf="!isAdmin()">A propos</a></li>
+                        <li><a href="#contact" *ngIf="!isAdmin()">Contact</a></li>
+
+                       
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-3">
+                <div class="header__right login">
+                  <ul class="header__right__widget" style="margin-right: 20px;" >
+                    <li  class=" glyphicon glyphicon-user clicable " style="font-size: 25px;">
+                      <ul class="dropdown"   >
+                        <li><a routerLink="/login" >Se connecter</a></li>
+                        <li><a (click)="onLogout()">Se déconnecter</a></li>
+                       
+                      </ul>
+                    </li>
+                  </ul>
+                   
+                    <ul class="header__right__widget" style="margin-right: 30px;">
+                     
+                        <li *ngIf="!isAdmin()" (click)="atCaddy()"><a  routerLink="/caddies"><span style="font-size: 30px;" class="icon_bag_alt"></span>
+                            <div class="tip" style="font-size: 15px;height: 20px;width: 20px;" >{{caddyService.getCurrentCaddy().productsItems.length}}</div>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        
+        </div>
+        <div class="row pull-left">
+            <div class="col-lg-2 col-md-4 col-sm-6  p-0   " style="margin-right: 5px;"  >
+                <a  href="https://www.facebook.com/ecobell.Maroc/"><img src="assets/images/f.png" style="height: 80px;  width: 500px;"></a> 
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6  p-0   " style="margin-right: 5px;"  >
+                <a href="https://twitter.com/cedtos1"><img src="assets/images/t.png" style="height: 80px;width: 500px;"></a> 
+            </div>
+          
+            <div class="col-lg-2 col-md-4 col-sm-6 p-0 " style="margin-right: 5px;" >
+                <a href="./index.html"><img src="assets/images/inst.png" style="height: 80px;width: 500px;"></a> 
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6  p-0  " style="margin-right: 5px;" >
+                <img src="assets/images/num.jpg" style="height: 80px;" class="heart animated css">
+            </div>
+      
+        </div>
+        <div class="canvas__open" (click)="activeMenu()">
+            <i class="fa fa-bars"></i>
+        </div>
+       
+    </div>
+    
+  </header>
+ 
+   
+
+  
+    <div >
+      <router-outlet>
+        
+      </router-outlet>
+    </div>
+    
+<section class="services spad center" style="margin-top: 100px">
+    <div class="container ">
+        <div class="row ">
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="services__item">
+                    <i class="fa fa-car"></i>
+                    <h6>Livraison</h6>
+                    <p>La livraison est gratuite</p>
+                </div>
+            </div>
+           
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="services__item">
+                    <i class="fa fa-support"></i>
+                    <h6>Support en ligne 24/7</h6>
+                    <p>Un support dédié</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="services__item">
+                    <i class="fa fa-headphones"></i>
+                    <h6>Paiement  Securisé</h6>
+                    <p>paiement en ligne</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="services__item">
+                    <i class="fa fa-gift"></i>
+                    <h6>Offre des cadeaux</h6>
+                    <p>nous offrons des cadeaux pour nos clients fidèles</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <footer class="footer" style="background-color: #81F0BF;" id="contact">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-3 col-md-6 col-sm-7">
+                  <div class="footer__about">
+                      <div class="footer__logo">
+                          <a href="./index.html"><img src="assets/images/Logotccie.png" style="height: 100px;"></a>
+                      </div>
+                      <p>TCCIE, Importateur et Distributeur de bien-être.</p>
+                      <div class="footer__payment">
+                          <a href="#"><img src="assets/img/payment/payment-1.png" alt=""></a>
+                          <a href="#"><img src="assets/img/payment/payment-2.png" alt=""></a>
+                         
+                          <a href="#"><img src="assets/img/payment/payment-4.png" alt=""></a>
+                     
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-5">
+                  <div class="footer__newslatter">
+                      
+  
+                      <img src="assets/images/localisation.png" style="height: 40px;margin-bottom: 8px;" class="center" />
+                       <p style="text-align: center;">T.C. Compagnie (T.C.C.I.E / ECOBELL MAROC) Siége social 
+                           (domiciliation) 61 Bd. Lalla Yacout N°85 , 2ème étage , CASABLANCA</p>
+                      
+                   </div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-4">
+                  <div class="footer__newslatter">
+                      
+  
+                      <img src="assets/images/phone.png" style="height: 40px;;margin-bottom: 8px;" class="center" />
+                       <p style="text-align: center;" >Tél : 0663-37 91 10</p>
+                       
+                   </div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-4">
+                  <div class="footer__newslatter">
+                      
+  
+                     <img src="assets/images/envelope.png" style="height: 40px; margin-bottom: 8px;" class="center"/>
+                      <p style="text-align: center;">Contact.tccie@gmail.com</p>
+                      <div class="footer__social" style="text-align: center;">
+                          <a href="https://www.facebook.com/ecobell.Maroc/"><i class="fa fa-facebook " style="color: #4267B2;"></i></a>
+                          <a href="https://twitter.com/cedtos1"><i style="color: #53A7E7;" class="fa fa-twitter"></i></a>
+                      
+                          <a href="#"><i class="fa fa-instagram" style="color: #F34D56;" ></i></a>
+              
+                      </div>
+                  </div>
+              </div>
+          </div>
+       
+      </div>
+  </footer>
+

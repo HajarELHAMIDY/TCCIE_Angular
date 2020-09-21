@@ -1,0 +1,139 @@
+ <div (click)="newProduct()"   class="add clicable pull-right" *ngIf="isAdmin()">Ajouter <span class="glyphicon glyphicon-plus-sign" ></span></div>
+
+   
+ 
+ 
+      <section class="shop spad" style="margin-top:5px;">
+        <div class="container">
+            <div class="row">
+            <div style="margin-bottom: 30px; " class="col-lg-6 form-inline my-2 my-lg-0 " >
+             
+                    <input class="form-control mr-sm-2" type="text" placeholder="Recherche..."  [(ngModel)]="searchName">
+                   
+                 
+            </div>
+            <div class="col-lg-4">
+                <h1 class="title " > Nos Produits </h1>
+            </div>
+           
+           
+            </div>
+            <div class="row">
+
+                <div class="col-lg-3 col-md-3">
+                    
+                    <div class="shop__sidebar">
+                        <div class="sidebar__categories">
+                            <div class="section-title">
+                                <h4>Gammes</h4>
+                            </div>
+                            <div class="categories__accordion" *ngIf="rangs" >
+                                <div class="accordion" id="accordionExample" *ngFor="let r of rangs._embedded.rangs ">
+                                   
+                                
+                                    <div class="card" >
+                                        <div class="card-heading clicable" (click)="getProductByRang(r)"  [ngClass]="currentRang  == r? 'myActive' : ''">
+                                            <a data-toggle="collapse" data-target="#collapseFour"   >{{r.nameRang}}</a>
+                                        </div>
+                                  <!--
+                                       <div id="collapseFour" class="collapse" data-parent="#accordionExample">
+                                            <div class="card-body">
+                                                <ul *ngIf="categories && currentRang  == r">
+                                                    <li class="clicable cat" [ngClass]="currentCat  == c? 'myActive' : ''" (click)="getProductByCat(c)" *ngFor="let c of categories._embedded.categories"> {{c.nameCategory}} </li>
+
+                      
+                                                </ul>
+                                            </div>
+                                        </div>
+                                  -->     
+                                        <hr style="margin-right: 25px;">
+                                    </div>
+                                  
+                                </div>
+                             
+                            </div>
+                        </div>
+                       
+                     
+                        
+                    </div>
+                </div>
+           <div class="row col-lg-9 col-md-9 ">
+           
+ 
+          
+        <div class="row property__gallery " *ngIf="products" style="margin-left: 60px;">
+     <div *ngFor="let p of products | filter:searchName | paginate : {id: 'listing_pagination', 
+     itemsPerPage : 9, 
+     currentPage: page,
+     totalItems : totalRecords}" >
+        <!-- <div class="col-lg-11 col-md-6 col-sm-12 mix women" style="margin-right: 30px;" *ngIf="currentCat == null || p.catgory.idCategory== currentCat.idCategory">
+                      -->    
+                <div class="col-lg-11 col-md-12 col-sm-12 mix women" style="margin-right: 30px;" >
+                      
+                <div class="product__item">
+                    <div class="product__item__pic set-bg" >
+                        <img  height="200" width="200"  class="center"  [src]="this.catService.host+'/photoProducts/'+p.idProduct+'?ts='+getTs()"/>
+                              
+                        <div class="label new" *ngIf="p.promotion" >Promotion</div>
+                    
+                        <ul class="product__hover">
+        
+                            <li><a (click)="onProductDetails(p)"><span class="arrow_expand"></span></a></li>
+                            <li><a   (click)="OnEditPhoto(p)" *ngIf="isAdmin()" ><span class="glyphicon glyphicon-download-alt"></span></a></li>
+                            <li><a   (click)="onAddToCard(p)" *ngIf="!isAdmin()" ><span class="icon_bag_alt"></span></a></li>
+                           
+                            <li><a  (click)="OnDeleteProduct(p)" *ngIf="isAdmin()"><span class="icon_close"></span></a></li>
+                            
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6> {{p.nameProduct}}</h6>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product__price">{{p.price|number:'0.2'}} MAD </div>
+
+                    </div>
+                    <div  *ngIf="addCart==true && currentProduct ==p && p.opt==null" class="cart__quantity">
+                        <form #f="ngForm" style="text-align: center; margin-top: 20px;">
+                  
+                            <input type="number"  name="quantite" ngModel style="width: 50px;" [(ngModel)]="p.quantity"/>
+                      
+                            <a ><span > <img height="40" (click)="onAddProductToCaddy(p)" src="assets/images/caddy2.png" class="clicable"/></span></a>
+                        </form>
+                    </div>
+                    <div *ngIf="p.opt==true  && currentProduct ==p && addCart==true">
+                        <span class="opt-btn clicable" (click)="onProductDetails(p)" >Choisir l'option</span>
+
+                    </div>
+                   
+                    <div *ngIf="editPhoto==true && currentProduct ==p">
+                        <input type="file" (change)="onSelectedFile($event)"/>
+                        <button class="opt-btn" (click)="uploadPhoto()">Télécharger</button>
+                  
+                    </div>    
+                </div>
+           
+            </div>
+            </div>
+           <div class="col-lg-12">
+                <pagination-controls  id="listing_pagination"
+                
+                maxSize="3"
+                directionLinks="true"
+               (pageChange)="page= $event"
+                previousLabel="Précédent"
+                nextLabel="Suivant"
+            ></pagination-controls>
+            </div>
+            </div>
+        </div>     
+        </div>
+    </div>
+    </section>
+      

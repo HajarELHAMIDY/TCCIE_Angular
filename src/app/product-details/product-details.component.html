@@ -1,0 +1,305 @@
+<section class="product-details spad" *ngIf="currentProduct">
+   <div class="container">
+            <div class="row" *ngIf="mode==0">
+                <div class="col-lg-5" >
+                    <div class="product__details__pic" >
+                       
+                        <div class="product__details__slider__content " >
+                           
+                                <img  clas="col-sm-12"  width="450"  [src]="this.catalService.host+'/photoProducts/'+currentProduct.idProduct+'?ts='+getTS()" alt="image">
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="product__details__text">
+                        <h3>{{currentProduct.nameProduct}} </h3>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                      
+                        </div>
+                      
+                        <div class="product__details__price">{{currentProduct.price}} MAD</div>
+                        <p>{{currentProduct.descProduct}}</p>
+                        <div style="margin-bottom:20px ;" *ngIf="this.currentProduct.opt" >
+                           
+                            <label>Choisir l'option :</label>
+                            
+                            <select class="form-control" 
+                            class="form-control"  (change)="selectOptionPs($event.target.value)"
+                            [(ngModel)]="selected" *ngIf="options" >
+                      
+                              <option *ngFor="let g of options.optionPs" [value]="g.name" >{{g.name}}</option>
+                             
+                            </select>
+                       
+                    </div>
+                        <div class="product__details__button">
+                            <form class="quantity">
+                                <label>Quantité:</label>
+                                
+                  
+                                    <input type="number" name="quantite" ngModel style="width: 50px;" [(ngModel)]="currentProduct.quantity"/>
+                              
+                        
+                                
+                            </form>
+                            
+                            <a *ngIf="option && !authService.isAdmin()" (click)="onAddProductToCaddy(currentProduct)" class="cart-btn clicable" ><span class="icon_bag_alt"></span> Ajouter au panier</a>
+                           
+                        </div>
+               
+                    </div>
+                </div>
+                <div class="glyphicon glyphicon-edit pull-right btn col-lg-1 add" (click)="onEditProduct()" *ngIf="authService.isAdmin()"></div>
+                <div class="col-lg-1">
+                    <span class="glyphicon glyphicon-download-alt pull-right btn col-lg-2 add" (click)="onEditPhoto(currentProduct)" *ngIf="authService.isAdmin()"></span>
+                    <div *ngIf="editPhoto">
+                        <input type="file" (change)="onSelectedFile($event)"/>
+                        <button class="btn btn-success" (click)="uploadPhoto()">Télécharger</button>
+                  
+                    </div>    
+                </div>
+                
+            </div>
+            <hr>
+<div *ngIf="mode==0">
+            <h3   class="product__details__price"  > Plus de détails</h3>
+            <div class="row">
+                 
+                <div class="col-lg-6 col-md-12 col-sm-12" style="margin-bottom: 20px;">
+                    <video controls="controls" loop="loop" class="col-lg-12 col-sm-12 ">
+                        <source src="assets/images/ecobell.mp4">
+                    </video>
+                </div>
+                <p class="col-lg-6 col-md-6 desc">
+                    Vous avez un événement professionnel important, un rendez-vous romantique ou tout simplement l’envie d’améliorer aussi souvent que vous le désirez votre apparence, en un instant, et paraître ainsi plus jeune et plus dynamique ?
+
+L’utilisation d’ECOBELL est extrêmement simple et ne nécessite aucune compétence particulière.
+
+Ce type de produit est déjà utilisé par de nombreux acteurs, comédiens et autres stars du showbiz.
+<br><br> ECOBELL a été conçu pour hommes, femmes et tous les types de cheveux.
+
+Un flacon de 28 grammes suffit pour 50 à 100 applications (de 2 à 12 mois) selon la (les) zone(s) à étoffer et la fréquence d’utilisation.
+LE SPRAY FIXATEUR SANS GAZ ECOBELL 100ml a été spécialement conçu pour renforcer la fixation des microfibres capillaires ECOBELL et assurer une protection contre les UV.
+Il résiste à la pluie, à la transpiration et au vent.
+
+                </p>
+
+            </div>
+            <h3   class="product__details__price" style="margin-top: 50px;"  > Comment utiliser ECOBELL </h3>
+            <p class="desc">
+                Avant toute chose, il est nécessaire de se laver les cheveux, de les coiffer et de les sécher.
+L’application d’ECOBELL sur cheveux humides est fortement déconseillée car la répartition du produit risquerait de ne pas s’effectuer correctement.
+<br>– Il vous suffit d’appliquer ECOBELL sur la chevelure. L’effet est immédiat.
+<br>– Pour fixer ECOBELL d’une manière prolongée, il est conseillé d’utiliser le spray fixateur sans gaz ECOBELL. L’effet produit peut durer plusieurs jours ; en fait, jusqu’au prochain shampooing.
+Les points forts :
+
+<br>– Sa flexibilité. Pas de grande décision à prendre, pas de séance d’entretien avec un spécialiste :
+avec ECOBELL, il est possible de retrouver du volume à volonté en quelques secondes.
+
+<br>– La liberté de  »s’essayer avec plus de cheveux ». Vous aimeriez changer de look facilement et sans vous engager, tester la réaction de votre entourage avant de vous décider pour une technique permanente ? Pourquoi ne pas essayer ECOBELL et juger par vous-même de votre nouveau pouvoir de séduction…
+
+<br>– Son prix. ECOBELL est une technique extrêmement bon marché accessible à nombreux.
+<br>– Les microfibres sont à base de Kératine 100 % naturelle.
+
+<br><span style="color: #08EDAC;"> 5 couleurs disponibles : </span><br>
+
+ECOBELL est disponible en 5 nuances qui recouvrent toutes les couleurs naturelles, mais aussi toutes les nuances de cheveux colorés.
+
+Nous sommes sûrs des résultats, nous voulons vous le prouver !
+
+Des milliers de clients utilisent ECOBELL quotidiennement dans le Monde. Essayez-le ! On se sent vraiment mieux avec des cheveux !
+
+            </p>
+            <h3   class="product__details__price" style="margin-top: 50px;"  > De quoi est composé ECOBELL</h3>
+            <p class="desc">
+                ECOBELL contient plus de 99,64 % d’ingrédients complètement naturels, principalement la kératine.
+
+<br>Il n’y a aucun ajout de produit chimique nocif.
+            </p>
+     
+            <h3   class="product__details__price" style="margin-top: 50px;"  >Comment utiliser ECOBELL et Minoxidil en même temps ?</h3>
+            <p class="desc">
+                Oui, vous pouvez utiliser le Minoxidil (ou tout autre lotion capillaire). Appliquez d’abord le Minoxidil, laissez sécher puis saupoudrer ECOBELL.
+                <br> L’usage de ECOBELL n’interfère en aucun cas avec tout autre traitement capillaire.
+            </p>
+            <h3   class="product__details__price" style="margin-top: 50px;"  >Combien de temps dure un flacon de 28 grammes ECOBELL ?</h3>
+            <p class="desc">
+                En moyenne, le flacon de 28 gr suffit pour 50 à 100 applications (= de 2 à 12 mois selon la fréquence d’utilisation et la/les zone/s à étoffer).
+
+
+            </p>
+            <h3   class="product__details__price" style="margin-top: 50px;"  >Est-ce que ECOBELL coule au contact de l’eau ou la transpiration ?</h3>
+            <p class="desc">
+                NON, les microfibres ECOBELL sont hypo-solubles et ne peuvent donc pas couler. Même au contact de la pluie, ECOBELL adhère fortement aux fils de cheveux.
+
+
+
+            </p>
+            <h3   class="product__details__price" style="margin-top: 50px;"  >L’utilisation de ECOBELL peut-il affecter la croissance des cheveux ?
+            </h3>
+            <p class="desc">
+                NON, les fibres ECOBELL n’interfèrent en aucun cas la croissance des cheveux.
+
+
+            </p>
+            <h3   class="product__details__price" style="margin-top: 50px;"  >Que faire si je retrouve des fibres sur mes vêtements ou mon oreiller ?
+
+            </h3>
+            <p class="desc">
+                Si vous retrouvez des fibres ECOBELL sur n’importe quelle surface ou des vêtements, secouez simplement avec votre main et les fibres disparaîtront.
+
+            </p>
+            <h3   class="product__details__price" style="margin-top: 50px;"  >Est-il nécessaire d’utiliser un fixateur ?
+            </h3>
+            <p class="desc">
+                Il est conseillé d’utiliser le Spray SANS GAZ ECOBELL pour maintenir les microfibres en place toute la journée, voire plusieurs jours.
+
+            </p>
+        
+        <h3   class="product__details__price" style="margin-top: 50px;"  >Puis-je utiliser ECOBELL après une chimiothérapie ?
+        </h3>
+        <p class="desc">
+            Non. Tant que les cheveux n’ont pas commencé à repousser, ECOBELL ne pourra pas être utilisé car le produit n’adhère pas sur le seul cuir chevelu dépourvu de cheveux ou poils. Néanmoins, une fois que les cheveux auront commencé à repousser, ECOBELL donnera pleine satisfaction.
+        </p>
+        <h3   class="product__details__price" style="margin-top: 50px;"  >Est-ce que ECOBELL abîme les cheveux ou le cuir chevelu ?
+        </h3>
+        <p class="desc">
+            NON. Les tests cliniques effectués sous contrôle dermatologique ont démontré que ECOBELL est anti-allergénique et ne présente aucun risque pour les cheveux et le cuir chevelu. ECOBELL a les mêmes propriétés que les cheveux humains et contient 99,64% d’ingrédients naturels. ECOBELL n’est qu’un complément capillaire.  </p>
+
+            <h3   class="product__details__price" style="margin-top: 50px;"  >Mes cheveux ont plusieurs nuances : quelle couleur choisir ?
+            </h3>
+            <p class="desc">
+                ECOBELL existe en 5 couleurs qui peuvent être mélangées lors de l’application. Si vous hésitez entre 2 couleurs, il est conseillé de choisir la nuance la plus foncée.
+
+                Nos points forts face aux autres marques :<br>
+                
+                – nos Produits sont à base de 99,64% de composants TOTALEMENT NATURELS dont 99% de Kératine naturelle.
+                
+                <br> – un rapport qualité/quantité/prix inégalable
+                
+                <br> – une contenance de 28 gr
+                
+                <br> – notre gamme est visible et conseillée chez différents Revendeurs au Maroc.
+                
+                <br> Comparez….c’est gratuit, l’essayer…c’est l’adopter.</p>
+                <h3   class="product__details__price" style="margin-top: 50px;"  >Le spray fixateur :
+                </h3>
+                <p class="desc">
+                    LE SPRAY FIXATEUR SANS GAZ ECOBELL 100ml a été spécialement conçu pour renforcer la fixation des microfibres capillaires ECOBELL et assurer une protection contre les UV.
+                   <br> Il résiste à la pluie, à la transpiration et au vent.
+                   <br>
+                    
+                    – Pour fixer ECOBELL d’une manière prolongée, il est conseillé d’utiliser le spray fixateur sans gaz ECOBELL. L’effet produit peut durer plusieurs jours ; en fait, jusqu’au prochain shampooing.</p>
+                    <h3   class="product__details__price" style="margin-top: 50px;"  >Est-il nécessaire d’utiliser un fixateur ?
+
+                    </h3>
+                    <p class="desc">
+                        Il est conseillé d’utiliser le Spray SANS GAZ ECOBELL pour maintenir les microfibres en place toute la journée, voire plusieurs jours
+
+</p>
+</div>                 
+        </div>     
+       
+   
+    </section>
+
+    <section class="checkout spad" *ngIf="mode==1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h6 class="coupon__link"><span class="icon_tag_alt"></span> <a routerLink="/products/1/0">Cliquez ici pour revenir à la liste des produits</a>
+               </h6>
+                </div>
+            </div>
+            <form #f="ngForm" (ngSubmit)="onUpdateProduct(f.value)"class="checkout__form form">
+                <div class="row">
+                    <div class="col-lg-8 " >
+                    
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="checkout__form__input">
+                                    <p>Nom du produit<span>*</span></p>
+                                    <input type="text" name="name" [ngModelOptions]="{standalone: true}" ngMdel [(ngModel)]="currentProduct.nameProduct" class="form-control">
+      
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-12">
+                                <div class="checkout__form__input">
+                                    <p>Description </p>
+                                    <textarea  name="desc" ngMdel [ngModelOptions]="{standalone: true}" [(ngModel)]="currentProduct.descProduct" class="form-control"></textarea>
+        
+                                </div>
+                             
+                            </div>
+                            <div class="col-lg-12">
+                              <div class="checkout__form__input">
+                                  <p>Prix  </p>
+                                  <input type="text" name="price" [ngModelOptions]="{standalone: true}" ngMdel [(ngModel)]="currentProduct.price" class="form-control">
+           
+                              </div>
+                           
+                          </div>
+                            <div class="col-lg-12">
+                              <div class="checkout__form__input">
+                                  <p>Stock  </p>
+                                  <input type="text" name="price" [ngModelOptions]="{standalone: true}" ngMdel [(ngModel)]="currentProduct.stock" class="form-control">
+          
+                              </div>
+                           
+                          </div>
+                          <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="checkout__form__input" >
+                                <p>Gamme<span>*</span></p>
+                                <select class="form-control"   *ngIf="rangs"
+                class="form-control"  (change)="selectOptionGamme($event.target.value)"
+                [(ngModel)]="selected"  [value]='currentProduct.rang.nameRang' [ngModelOptions]="{standalone: true}">
+          
+                  <option *ngFor="let g of rangs.rangs" [value]="g.nameRang" >{{g.nameRang}}</option>
+                 
+                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6" >
+                            <div class="checkout__form__input" *ngIf="currentProduct.category">
+                                <p>Catégorie </p>
+                                <select class="form-control"  (change)="selectOption($event.target.value)" [ngModelOptions]="{standalone: true}"
+                                [(ngModel)]="selected" [value]='currentProduct.category.nameCategory' *ngIf="categories">
+                                
+                                  <option *ngFor="let c of categories.categories"[value]="c.nameCategory">{{c.nameCategory}}</option>
+                                 
+                                </select>
+                            </div>
+                        </div>
+                          <div class="col-lg-12" style="margin-top: 10px;">
+                            <div class="checkout__form__checkbox">
+                                <p >Promotion  </p>
+                                <input type="checkbox"  name="promotion" [ngModelOptions]="{standalone: true}" ngMdel [(ngModel)]="currentProduct.promotion" id="acc">
+                                <span class="checkmark"></span>
+                            </div>
+                         
+                        </div>
+                        <div class="col-lg-12" style="margin-top: 10px;">
+                            <div class="checkout__form__checkbox">
+                                <p >Option  </p>
+                                <input type="checkbox"  name="option" ngMdel [ngModelOptions]="{standalone: true}" [(ngModel)]="currentProduct.opt" id="acc">
+                                <span class="checkmark"></span>
+                            </div>
+                         
+                        </div>
+                     
+                           
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <button type="submit" class="site-btn" style="margin-top: 10px;">Enregistrer</button>
+                </form>
+            </div>
+      

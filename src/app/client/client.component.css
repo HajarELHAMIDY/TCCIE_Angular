@@ -1,0 +1,17 @@
+.fullscreenDiv {
+    
+    
+    margin-top: 100px;
+    margin-bottom: 200px;
+ 
+}
+.img-payement{
+    margin-left: 30px;
+    height: 50px;
+    cursor: pointer;
+}
+.confirm{
+    color: #ca1515;
+    margin-left: 30px;
+    font-size: 16px;
+}

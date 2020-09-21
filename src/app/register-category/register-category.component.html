@@ -1,0 +1,39 @@
+
+<section class="checkout spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h6 class="coupon__link"><span class="icon_tag_alt"></span> <a routerLink="/categories">Cliquez ici pour revenir à la gestion des catégories</a>
+           </h6>
+            </div>
+        </div>
+        <form  #f ="ngForm" (ngSubmit)="processForm()" class="checkout__form form ">
+      
+                <div class="col-lg-8 " >
+                
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="checkout__form__input ">
+                                <p>Nom du catégorie<span>*</span></p>
+                                <input type="text" name="name" required  class="form-control" [ngModelOptions]="{standalone: false}" [(ngModel)]="category.nameCategory"/>
+                        
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-12">
+                            <div class="checkout__form__input">
+                                <p>Description </p>
+                                <textarea type="text" name="longitude"  ngModel class="form-control" [(ngModel)]="category.desCategory">
+                                </textarea>
+                            </div>
+                         
+                        </div>
+                   
+                       
+                        </div>
+                    </div>
+                    
+                
+                <button type="submit"  [disabled]="f.invalid" class="site-btn" style="margin-top: 10px;" value="Register">Enregistrer</button>
+            </form>
+        </div>

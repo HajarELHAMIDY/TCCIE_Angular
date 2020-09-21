@@ -1,0 +1,36 @@
+.heigthed{
+    height: 380px;
+    
+}
+.clicable{
+    cursor: pointer;
+    
+  }
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+  }
+  .add{
+    font-size: 25px;color: #f44336; 
+    text-align: center;
+    margin-right: 50px;
+    margin-top: 10px;
+    
+}
+  .title{
+   font-size: 60px;
+color: #111111;
+font-family: 'Cookie', cursive;
+margin-bottom: 30px; text-align: center;
+}
+.myActive a{
+  color: #f44336;
+ 
+
+}
+.cat{
+  font-size: 16px;
+ 
+}

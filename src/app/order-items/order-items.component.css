@@ -1,0 +1,13 @@
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+  }
+  .clicable{
+    cursor: pointer;
+  }
+  .icon{
+    font-size: 30px;
+    color: #CA1515;
+  }

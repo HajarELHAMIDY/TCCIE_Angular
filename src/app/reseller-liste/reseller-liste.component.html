@@ -1,0 +1,52 @@
+<section class="blog spad">
+    <div class="container">
+        <div class="row">
+        <div style="padding-top: 10px; " class="col-lg-2 col-sm-10 pull-left" >
+             
+            <input class="form-control mr-sm-2" type="text" placeholder="Recherche..."  [(ngModel)]="searchReseller">
+      
+         
+    </div>    
+        <div class="row col-sm-12 col-lg-10"  *ngIf="resellers" >
+           
+               
+                <div class="blog__item col-lg-4 col-md-6 col-sm-6" *ngFor="let r of resellers | filterlisteReseller:searchReseller  | paginate : {id: 'listing_pagination', 
+                itemsPerPage : 9, 
+                currentPage: page,
+                totalItems : totalRecords}" >
+                    <div class="blog__item__pic" style="margin-bottom: 50px;">
+                        <img  height="250" width="250"   [src]="this.catService.host+'/photoResellers/'+r.idReseller+'?ts='+getTs()"/>
+                       
+                    </div>
+                    <div class="blog__item__text">
+                        <h5 class="title">{{r.nameReseller}}</h5>
+                        
+                    </div>
+                   
+                      
+                        <h5 style="width: 300px;">   <span class="glyphicon glyphicon-home"> : </span> {{r.addresse}}</h5>
+                        
+                 
+                        <h5> <span class="glyphicon glyphicon-phone"> : </span> {{r.tel}}</h5>
+                        
+                 
+                    
+                </div>
+             
+               
+            
+           
+        </div>
+        <div class="col-lg-12">
+            <pagination-controls  id="listing_pagination"
+            
+            maxSize="3"
+            directionLinks="true"
+           (pageChange)="page= $event"
+            previousLabel="Précédent"
+            nextLabel="Suivant"
+        ></pagination-controls>
+        </div>
+    </div>
+   </div>
+</section>

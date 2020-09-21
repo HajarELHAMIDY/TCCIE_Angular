@@ -1,0 +1,18 @@
+.clicable{
+    cursor: pointer;
+   
+  }
+.add{
+    font-size: 25px;color: #f44336; 
+    text-align: center;
+    
+}
+.titre{
+  font-family: cursive;
+  font-size: 30px;
+  color: #ca1515;
+  text-align: center;
+  margin-bottom: 40px;
+  background-color:#E6FBEA ;
+  padding-bottom: 10px;
+}

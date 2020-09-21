@@ -1,0 +1,51 @@
+<section class="shop-cart spad">
+        <div class="container" >
+            <div class="row"> 
+                    
+                                    
+                <div class="col-lg-9" style="margin-left: 150px;">
+                    <div style="padding-top: 10px; " class="col-lg-12 form-inline my-2 my-lg-0 pull-right" >
+             
+                        <input class="form-control mr-sm-2" type="text" placeholder="Recherche..."  [(ngModel)]="searchRang">
+                  
+                     
+                </div>   
+                    <div class="titre"> Gestion des gammes </div>
+                  
+                        <div (click)="newRang()" class="add clicable pull-right">Ajouter <span class="glyphicon glyphicon-plus-sign" ></span></div>
+   
+                    <div class="shop__cart__table">
+                        <table>     <thead>
+                                <tr>
+                                    <th style="text-align: center;">Id</th>
+
+                                    <th style="text-align: center;">Nom</th>
+                                    <th style="text-align: center;">Description</th>
+                               
+                                
+                                </tr>
+                            </thead>
+                            <tbody *ngIf="rangs">
+                                <tr *ngFor="let c of rangs| filterRang:searchRang">
+                                        <td class="item">{{c.idRang}}</td>
+                                    <td class="cart__price" style="text-align: center;">
+                                        {{c.nameRang}}
+                                    </td>
+                                    <td class="item" style="width: 250px;">{{c.descRang}}</td>
+                                   
+                                 
+                                    <td class="cart__close"><span (click)="OnDeleteRang(c.idRang)"  class="icon_close"></span></td>
+                                    <td class="cart__close"><span (click)="updateRang(c)" class="glyphicon glyphicon-edit"></span></td>
+                               
+                                </tr>
+                             
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+      
+           
+        </div>
+    </section>
+

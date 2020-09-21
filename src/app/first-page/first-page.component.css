@@ -1,0 +1,104 @@
+.clicable{
+    cursor: pointer;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+  }
+.vd{
+    margin-left: auto;margin-bottom: 80px;
+    margin-right: auto;
+    display: block 
+}
+.title{
+    margin-top: 100px; font-size: 80px;
+color: #111111;
+font-family: 'Cookie', cursive;
+margin-bottom: 15px; text-align: center;
+}
+.titleV{
+    margin-top: 80px; font-size: 80px;
+color: #111111;
+font-family: 'Cookie', cursive;
+margin-bottom: 15px; text-align: center;
+}
+.bg-carousel{
+    background-color: #F2FEF4; margin-top: 80px;
+    height: 300px;
+}
+.item-carousel{
+    text-align: center; margin-top: 50px;
+   
+
+
+}
+.rs{
+    background-color: royalblue;margin-left: 50px; 
+                display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	padding-left: 30px;
+
+	margin-top: 50px;
+	margin-right: 10px;
+}
+.gamme{
+    width: 200px;
+    height: 200px;
+}
+.title-gamme{
+    text-align: center;
+    margin-top: 8px;
+    font-size: 20px;
+    font-family: cursive;
+}
+
+a.button5{
+     display:inline-block;
+     padding:0.46em 1.6em;
+     height: 200px;
+      border:2px solid #fff;
+ 
+      box-shadow: 10px 10px 5px #ccc;
+      -moz-box-shadow: 10px 10px 5px #ccc;
+      -webkit-box-shadow: 10px 10px 5px #ccc;
+      -khtml-box-shadow: 10px 10px 5px #ccc;
+   width: 500px;
+   height: 80px;
+   opacity: 1;
+
+     border-radius:0.12em;
+box-sizing: border-box;
+text-decoration:none;
+
+font-size: 30px;
+color:#000000;
+text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+background-color:#FFFFFF;
+text-align:center;
+transition: all 0.15s;
+margin: 0;
+position: absolute;
+top: 50%;
+left: 50%;
+-ms-transform: translate(-50%, -50%);
+transform: translate(-50%, -50%);
+}
+a.button5:hover{
+text-shadow: 0 0 2em rgba(255,255,255,1);
+color:#FFFFFF;
+border-color:#FFFFFF;
+    }
+@media all and (max-width:30em){
+a.button5{
+display:block;
+margin:0.4em auto;
+  
+}
+}

@@ -1,0 +1,89 @@
+<section class="shop-cart spad">
+    <div class="container" >
+        <div class="row"> 
+                
+          
+            <div class="col-lg-12">
+                <div style="padding-top: 10px; " class="col-lg-12 form-inline my-2 my-lg-0 pull-right" >
+         
+                    <input class="form-control mr-sm-2" type="text" placeholder="Recherche par points..."  [(ngModel)]="search">
+              
+                 
+            </div>    
+                <div class="titre"> Listes des clients</div>
+              
+                           <div class="shop__cart__table">
+                    <table>     <thead>
+                            <tr>
+                                <th style="text-align: center;">Nom</th>
+                                <th style="text-align: center;">Prénom</th>
+                                <th style="text-align: center;">Email</th>
+                                <th style="text-align: center;">Tél</th>
+                                <th style="text-align: center;">Pts-F</th>
+                                <th style="text-align: center;">Ville</th>
+                                <th style="text-align: center;">Adresse</th>
+                                <th style="text-align: center;">Compte</th>
+                         <!--       <th style="text-align: center;">Ville</th>-->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let c of clients |filterClient:search
+                            | paginate : {id: 'listing_pagination', 
+     itemsPerPage : 10, 
+     currentPage: page,
+     totalItems : totalRecords}">
+                        
+                                   
+                                <td class="item" style="text-align: center;">
+                                    {{c.lastName}}
+                                </td>
+                                <td class="item" style="text-align: center;">
+                                    {{c.firstName}}
+                                </td>
+                                <td class="item" style="text-align: center;">
+                                    {{c.email}}
+                                </td>
+                                <td class="item" style="text-align: center;">
+                                    {{c.phone}}
+                                </td>
+                                <td class="item" style="text-align: center;">
+                                    {{c.ptsF}}
+                                </td>
+                                <td class="item" style="text-align: center;">
+                                    {{c.city.name}}
+                                </td>
+                                <td class="item" style="text-align: center;">
+                                    {{c.address}}
+                                </td>
+                                <td class="item" style="text-align: center;" *ngIf="c.compte==true" style="color: #11E134;">
+                                  Activé
+                                </td>
+                                <td class="item" style="text-align: center;" *ngIf="c.compte==false" style="color: red;">
+                                    Désactivé
+                                </td>
+                            <!--    <td class="item" style="text-align: center;">
+                                    {{getVille(c)}} {{nameVille}}
+                                </td>
+                              -->
+                           
+                            </tr>
+                         
+                        </tbody>
+                    </table>
+                    <div class="col-lg-12">
+                        <pagination-controls  id="listing_pagination"
+                        
+                        maxSize="3"
+                        directionLinks="true"
+                       (pageChange)="page= $event"
+                        previousLabel="Précédent"
+                        nextLabel="Suivant"
+                    ></pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+       
+    </div>
+</section>

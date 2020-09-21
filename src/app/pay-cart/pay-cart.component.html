@@ -1,0 +1,57 @@
+<!--<form> 
+    <input type = "text" placeholder = "Credit Card #" name = "cardNumber"> 
+    <input type = "text" placeholder = "Expiration Month" name = "expMonth"> 
+    <input type = "text" placeholder = "Année d'expiration" name = "expYear"> 
+    <input type = "text" placeholder = "CVC" name = "cvc"> 
+    <button (click) = "chargeCreditCard ()"> Soumettre </button> 
+  </form>
+
+-->
+  
+<section class="checkout spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h6 class="coupon__link"><span class="icon_tag_alt"></span> <a routerLink="/client-cmd">Cliquez ici pour revenir à votre commande</a>
+           </h6>
+            </div>
+        </div>
+        <form  class="checkout__form form">
+            <div class="row">
+                <div class="col-lg-6 " >
+                
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="checkout__form__input">
+                                <p>Credit carte<span>*</span></p>
+                                <input type="text" name="cardNumber"  class="form-control" />
+  
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="checkout__form__input">
+                                <p>Le mois d'éxpiration<span>*</span></p>
+                                <input type="text" name="expMonth"  required class="form-control"/>
+  
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="checkout__form__input">
+                                <p>L'année d'éxpiration<span>*</span></p>
+                                <input type="text" name="expYear" required  class="form-control" />
+                              </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="checkout__form__input">
+                                <p>CVC<span>*</span></p>
+                                <input type="text" name="cvc" required class="form-control" />
+                              </div>
+                        </div>
+                                     
+                        </div>
+                    </div>
+                    
+                </div>
+                <button type="submit" (click) = "chargeCreditCard ()" class="site-btn" style="margin-top: 10px;">Soumettre</button>
+            </form>
+        </div>

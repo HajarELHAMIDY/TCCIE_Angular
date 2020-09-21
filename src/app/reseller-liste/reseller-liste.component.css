@@ -1,0 +1,13 @@
+.title{
+  font-size: 18px;
+color: #ca1515;
+font-family:  cursive;
+ text-align: center;
+ 
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  
+}

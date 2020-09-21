@@ -1,0 +1,14 @@
+body {
+    text-align: center;
+}
+form {
+    display: inline-block;
+}
+.erreur{
+    color: red;
+    font-size: 20px;
+    margin-bottom: 18px;
+    display: block;
+   text-align: center;
+    
+}
